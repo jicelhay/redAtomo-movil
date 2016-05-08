@@ -7,12 +7,23 @@ login.factory('clientService',[ function() {
     
     publicMethods.setClient = function(client){
        clientInfo = client;
+       localStorage.setItem('name', clientInfo.name);
+       localStorage.setItem('email',clientInfo.email);
+       localStorage.setItem('sessionId',clientInfo.sessionId);
     };
     
     publicMethods.getClient = function(){
-         clientInfo = {name: 'Diego Fernandez', email: 'dfernan@xxx.com', sessionId: 'pedroql'};
+         if(!clientInfo){
+             clientInfo.name = localStorage.getItem('name');
+             clientInfo.email = localStorage.getItem('email');
+             clientInfo.sessionId = localStorage.getItem('sessionId');
+         }
          return clientInfo;
     };
+    
+    publicMethods.getClientClasses = function(){
+        return [];
+    }
     
     return publicMethods;
     

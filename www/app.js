@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('redAtomo', ['ionic', 'starter.controllers','login'])
+angular.module('redAtomo', ['ionic', 'starter.controllers','login', 'logged'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,42 +30,42 @@ angular.module('redAtomo', ['ionic', 'starter.controllers','login'])
     controller: 'loginCtrl'
   })
   
-  .state('app', {
-    url: "/app",
+  .state('logged', {
+    url: "/logged",
     abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
+    templateUrl: "modules/logged/logged.html",
+    controller: 'loggedCtrl'
   })
 
-  .state('app.search', {
-    url: "/search",
+  .state('logged.recent', {
+    url: "/recent",
     views: {
-      'tab-search': {
+      'tab-recent': {
         templateUrl: "templates/search.html"
       }
     }
   })
 
-  .state('app.browse', {
-    url: "/browse",
+  .state('logged.news', {
+    url: "/news",
     views: {
-      'tab-browse': {
+      'tab-news': {
         templateUrl: "templates/browse.html"
       }
     }
   })
 
-  .state('app.playlists', {
-    url: "/playlists",
+  .state('logged.multimedia', {
+    url: "/multimedia",
     views: {
-      'tab-playlists': {
+      'tab-multimedia': {
         templateUrl: "templates/playlists.html",
         controller: 'PlaylistsCtrl'
       }
     }
   })
 
-    .state('app.single', {
+    .state('logged.single', {
       url: "/playlists/:playlistId",
       views: {
         'tab-playlists': {

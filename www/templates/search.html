@@ -1,5 +1,7 @@
-<ion-view view-title="Search">
+<ion-view view-title="Recientes">
   <ion-content>
-    <h1>Search</h1>
+   <div ng-if="!model.showTabs">
+        <p> No tienes clases inscritas, puedes registrar nuevos cursos en la configuración de su cuenta</p>
+    </div>
   </ion-content>
 </ion-view>

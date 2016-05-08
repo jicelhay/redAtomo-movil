@@ -22,10 +22,11 @@ login.controller('loginCtrl',['$scope', '$state', '$rootScope', '$ionicLoading',
 
     // Metodos de scope
     $scope.signIn = function(){
+        if(!$scope.model.email || !$scope.model.password) return;
+        $ionicLoading.show();
         loginService.signIn($scope.model.username,$scope.model.password)
-        .then(function(idSession){
-        
-            $state.go('logged.main');
+        .then(function(){
+            $state.go('logged.recent');
         })
         .catch(function(){
                $ionicPopup.alert({
@@ -33,6 +34,7 @@ login.controller('loginCtrl',['$scope', '$state', '$rootScope', '$ionicLoading',
                 template: Constant.errorMessage
             });  
         })
+        .finally($ionicLoading.hide);
     }
     $scope.openSignUpModal = function() {
         $scope.signUpModal.show();
@@ -56,7 +58,8 @@ login.controller('loginCtrl',['$scope', '$state', '$rootScope', '$ionicLoading',
                 title: 'Error',
                 template: Constant.errorMessage
             });  
-            });
+            })
+            .finally($ionicLoading.hide);
     }
 
     

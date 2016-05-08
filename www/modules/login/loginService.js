@@ -9,13 +9,13 @@ function($http, $timeout, clientService) {
     publicMethods.signIn = function(email,password){
         return $timeout(function(){
             clientService.setClient('no info yet');
-        },400)
+        },500)
     };
     
     publicMethods.signUp = function(name,password,email){
          return $timeout(function(){
             clientService.setClient('no info yet');
-        },400)
+        },500)
     };
     
     return publicMethods;

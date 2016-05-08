@@ -1,0 +1,36 @@
+<ion-modal-view ng-controller="configCtrl">
+  <ion-header-bar> 
+   <div class="buttons">
+      <button class="button button-icon icon ion-close" style="margin-left: 350px;" ng-click="closeConfig()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+   <div class="list">
+
+        <div class="item item-divider">
+            Administrar mis cursos
+        </div>
+        <div class="item" ng-if="classes.length<=0">
+            No tienes cursos registrados
+        </div>   
+        <div class="item item-icon-right" ng-repeat="clientClass in classes" ng-click="deleteClass(clientClass)">
+            {{clientClass.name}}
+            <i class="icon ion-trash-a"></i>
+        </div>
+    </div>
+    <div class="item item-divider">
+        Agregar un nuevo curso
+    </div>
+    <form ng-submit="addClass()">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Código de seguridad</span>
+            <input type="text" placeholder="Código de seguridad" ng-model="model.code">
+        </label>
+        <label class="item">
+          <button class="button button-block button-assertive" type="submit">Registrar</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
