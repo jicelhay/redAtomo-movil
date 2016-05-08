@@ -11,8 +11,9 @@ logged.controller('configCtrl',['$scope', 'Constant', 'classService', '$ionicPop
      $ionicLoading.show();
      classService.addClass($scope.model.code)
         .then(function(classes){
+            $ionicPopup.alert({template: 'El curso se ha agregado con exito'});
             $scope.model.code = '';
-            $scope.classes = classes;
+            $scope.classes = classes;          
         })
         .catch(function(){
             $ionicPopUp.alert({template: Constant.errorMessage});

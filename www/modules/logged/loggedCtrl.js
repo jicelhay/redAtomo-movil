@@ -1,11 +1,10 @@
 var logged = angular.module('logged',[]);
 
-logged.controller('loggedCtrl',['$scope', 'Constant', 'clientService', '$ionicModal',
- function($scope,  Constant, clientService, $ionicModal) {
+logged.controller('loggedCtrl',['$scope', 'Constant', 'clientService', '$ionicModal', 'classService',
+ function($scope,  Constant, clientService, $ionicModal, classService) {
      
-     $scope.model = { showTabs: false};
-     $scope.classes = clientService.getClientClasses();
-          
+      $scope.classes = classService.getClasses();
+             
       $ionicModal.fromTemplateUrl('modules/logged/config-modal.html', {
         scope: $scope,
         controller: 'configCtrl',

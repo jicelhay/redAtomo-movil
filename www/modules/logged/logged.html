@@ -36,10 +36,16 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close >
+        <ion-item class = "item-divider">
           Mis Cursos
         </ion-item>
-        <ion-item menu-close ng-click="openConfig()">
+        <div class="item" ng-if="classes.length<=0">
+            No tienes cursos registrados
+        </div>   
+        <div class="item" ng-repeat="clientClass in classes" ng-click="goToClass(clientClass)" menu-close>
+            {{clientClass.name}}
+        </div>
+        <ion-item class="item-divider" menu-close ng-click="openConfig()">
           Configuración
         </ion-item>     
       </ion-list>
