@@ -1,0 +1,26 @@
+<ion-view>
+    <ion-content scroll="false">
+      
+        <div class = "col header text-center">
+            <img src="./img/logo.png" class = "logo" />
+        </div>
+        
+          <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">E-mail</span>
+                <input type="text" placeholder="E-mail">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Password</span>
+                <input type="password" placeholder="Password">
+            </label>     
+       
+        <div class="item">
+            <button ng-click="signIn()" class="button button-block button-assertive">
+            Iniciar Sesión
+            </button>
+            <a id="sign-up-text" style="margin-left: 10%;" ng-click="openSignUpModal()">¿Todavia no tienes cuenta? Registrate!</a>  
+        </div>      
+       </div>  
+    </ion-content>
+</ion-view>

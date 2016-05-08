@@ -1,0 +1,28 @@
+<ion-modal-view>
+  <ion-header-bar> 
+   <div class="buttons">
+      <button class="button button-icon icon ion-close" style="margin-left: 350px;" ng-click="closeSignUpModal()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="signUp()">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">E-mail</span>
+            <input type="email" placeholder="E-mail" ng-model="model.email">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Nombre</span>
+            <input type="text" placeholder="Nombre y Apellido" ng-model="model.name">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Password</span>
+            <input type="password" placeholder="Password" ng-model="model.password">
+        </label> 
+        <label class="item">
+          <button class="button button-block button-assertive" type="submit">Registrarse</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
