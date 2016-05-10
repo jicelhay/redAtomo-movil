@@ -25,8 +25,9 @@ login.controller('loginCtrl',['$scope', '$state', '$rootScope', '$ionicLoading',
         if(!$scope.model.email || !$scope.model.password) return;
         $ionicLoading.show();
         loginService.signIn($scope.model.username,$scope.model.password)
-        .then(function(){
-            $state.go('logged.recent');
+        .then(function(classId){
+    
+            $state.go('logged.recent',{classId: classId});
         })
         .catch(function(){
                $ionicPopup.alert({

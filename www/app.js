@@ -31,17 +31,23 @@ angular.module('redAtomo', ['ionic', 'starter.controllers','login', 'logged'])
   })
   
   .state('logged', {
-    url: "/logged",
+    url: "/logged/:classId",
     abstract: true,
     templateUrl: "modules/logged/logged.html",
-    controller: 'loggedCtrl'
+    controller: 'loggedCtrl',
+    resolve: {
+                classId : ['$stateParams', function($stateParams){
+                    return $stateParams.classId;
+                }]
+    }
   })
 
   .state('logged.recent', {
     url: "/recent",
     views: {
       'tab-recent': {
-        templateUrl: "templates/search.html"
+        templateUrl: "modules/recent/recent.html",
+        controller: "recentCtrl"
       }
     }
   })

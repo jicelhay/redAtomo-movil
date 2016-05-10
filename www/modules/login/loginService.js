@@ -9,7 +9,16 @@ function($http, $timeout, clientService, classService) {
     publicMethods.signIn = function(email,password){
         return $timeout(function(){
             clientService.setClient(randomPerson);
-            classService.setClasses([]);
+            var classes = [{id: 1 , name:'IV°A', school: 'DSLA'}];
+            classService.setClasses(classes);
+            var classId;
+            if(classes.length > 0){
+                classId = classes[0].id
+            }
+            else{
+                classId = 0;
+            }
+            return classId;
         },500)
     };
     
