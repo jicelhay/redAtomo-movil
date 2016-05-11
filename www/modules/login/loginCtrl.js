@@ -24,10 +24,11 @@ login.controller('loginCtrl',['$scope', '$state', '$rootScope', '$ionicLoading',
     $scope.signIn = function(){
         if(!$scope.model.email || !$scope.model.password) return;
         $ionicLoading.show();
-        loginService.signIn($scope.model.username,$scope.model.password)
+        loginService.signIn($scope.model.email,$scope.model.password)
         .then(function(classId){
-    
-            $state.go('logged.recent',{classId: classId});
+            $scope.model.email = '';
+            $scope.model.password = '';
+            $state.go('logged.recent',{classId: classId}, { reload: true });
         })
         .catch(function(){
                $ionicPopup.alert({

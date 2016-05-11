@@ -21,8 +21,11 @@ login.factory('clientService',[ function() {
          return clientInfo;
     };
     
-    publicMethods.getClientClasses = function(){
-        return [];
+    publicMethods.deleteClient = function(){
+        clientInfo = {};
+        localStorage.removeItem('name');
+        localStorage.removeItem('email');
+        localStorage.removeItem('sessionId');
     }
     
     return publicMethods;

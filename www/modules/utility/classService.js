@@ -3,18 +3,24 @@ var login = angular.module('logged');
 login.factory('classService',[ '$timeout', function($timeout) {
     
     var publicMethods = {};
-    var classes = [];
+    var classes;
  
     publicMethods.setClasses = function(clientClasses){
         classes = clientClasses;
     };
     publicMethods.getClasses = function(){
+        classes = classes ? classes : [];
         return classes;
     };
     publicMethods.addClass = function(code){
         //TODO setearlo en backend (PAJA)
         return $timeout(function(){
-            classes.push({id: 1 , name:'IV°A', school: 'DSLA'});
+            if(code === '1234'){
+                classes.push({id: 1 , name:'IV°A', school: 'DSLA'});
+            }
+            else{
+                classes.push({id: 2 , name:'2°C', school: 'DSLA'});    
+            }
             return classes;
         },600);    
     };
@@ -28,6 +34,11 @@ login.factory('classService',[ '$timeout', function($timeout) {
             return classes;
         },600); 
     };
+    
+    publicMethods.deleteClasses = function(){
+        classes = [];
+        console.log(classes);
+    }
    
     
     return publicMethods;

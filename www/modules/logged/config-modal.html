@@ -10,10 +10,10 @@
         <div class="item item-divider">
             Administrar mis cursos
         </div>
-        <div class="item" ng-if="classes.length<=0">
+        <div class="item" ng-if="model.classes.length<=0">
             No tienes cursos registrados
         </div>   
-        <div class="item item-icon-right" ng-repeat="clientClass in classes" ng-click="deleteClass(clientClass)">
+        <div class="item item-icon-right" ng-repeat="clientClass in model.classes" ng-click="deleteClass(clientClass)">
             {{clientClass.name}}
             <i class="icon ion-trash-a"></i>
         </div>

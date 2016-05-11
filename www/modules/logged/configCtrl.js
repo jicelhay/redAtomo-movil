@@ -1,10 +1,11 @@
 var logged = angular.module('logged');
 
-logged.controller('configCtrl',['$scope', 'Constant', 'classService', '$ionicPopup', '$ionicLoading',
- function($scope,  Constant, classService, $ionicPopup, $ionicLoading) {
+logged.controller('configCtrl',['$scope','$rootScope' ,'Constant', 'classService', '$ionicPopup', '$ionicLoading',
+ function($scope,$rootScope ,Constant, classService, $ionicPopup, $ionicLoading) {
      
  $scope.model = {code: null};
       
+   
  $scope.addClass = function(){     
      if(!$scope.model.code) return;
    
@@ -13,10 +14,11 @@ logged.controller('configCtrl',['$scope', 'Constant', 'classService', '$ionicPop
         .then(function(classes){
             $ionicPopup.alert({template: 'El curso se ha agregado con exito'});
             $scope.model.code = '';
-            $scope.classes = classes;          
+            $scope.model.classes = classes;
+            $scope.$broadcast('reloadClass');          
         })
         .catch(function(){
-            $ionicPopUp.alert({template: Constant.errorMessage});
+            $ionicPopup.alert({template: Constant.errorMessage});
         })
         .finally($ionicLoading.hide);
  };
@@ -25,7 +27,8 @@ logged.controller('configCtrl',['$scope', 'Constant', 'classService', '$ionicPop
      $ionicLoading.show();
      classService.deleteClass(clientClass)
         .then(function(classes){
-            $scope.classes = classes;
+            $scope.model.classes = classes;
+            $scope.$emit('reloadClass');  
         })
         .catch(function(){
             $ionicPopUp.alert({template: Constant.errorMessage});            
