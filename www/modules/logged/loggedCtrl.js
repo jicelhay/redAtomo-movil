@@ -7,15 +7,7 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
      
       $scope.model = {classId: $stateParams.classId};
       $scope.model.classes = classService.getClasses();
-       console.log($scope.model.classes);
-      console.log($scope.model.classId) 
-      
-      $scope.$on('reload',function(){  
-          console.log('llegue'); 
-       $scope.model.classes = classService.getClasses();
-       console.log($scope.model.classes);
-      });
-            
+       
       $ionicModal.fromTemplateUrl('modules/logged/config-modal.html', {
         scope: $scope,
         controller: 'configCtrl',
@@ -69,7 +61,7 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
     $scope.logOut = function(){
         $ionicLoading.show();
         loginService.logOut()
-        .then(function(){
+        .then(function(){    
              $state.go('login');
         })
         .catch(function(){

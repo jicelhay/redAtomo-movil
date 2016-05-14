@@ -1,7 +1,7 @@
 var login = angular.module('login');
 
-login.factory('loginService',['$http', '$timeout', 'clientService', 'classService', '$ionicHistory',
-function($http, $timeout, clientService, classService, $ionicHistory) {
+login.factory('loginService',['$http', '$timeout', 'clientService', 'classService',
+function($http, $timeout, clientService, classService) {
     
     var publicMethods = {};
     var randomPerson = {name:'Pedro Saratscheff', sessionId:'juanlalleva', email:'pedro@uc.cl'}
@@ -32,14 +32,8 @@ function($http, $timeout, clientService, classService, $ionicHistory) {
     
     publicMethods.logOut = function(){
         return $timeout(function(){
-            $ionicHistory.clearHistory();
-            $ionicHistory.clearCache();
             clientService.deleteClient();
-            classService.deleteClasses();
-            $ionicHistory.nextViewOptions({
-            disableBack: true,
-            historyRoot: true
-            });
+            classService.deleteClasses();         
         },400);
     }
     

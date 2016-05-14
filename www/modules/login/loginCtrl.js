@@ -1,9 +1,14 @@
 var login = angular.module('login',[]);
 
 login.controller('loginCtrl',['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopup',
- 'loginService', '$ionicModal', 'Constant',
- function($scope, $state, $rootScope, $ionicLoading, $ionicPopup, loginService, $ionicModal, Constant) {
+ 'loginService', '$ionicModal', 'Constant', '$ionicHistory',
+ function($scope, $state, $rootScope, $ionicLoading, $ionicPopup, loginService, $ionicModal, Constant, $ionicHistory) {
 
+    $scope.$on("$ionicView.enter", function(scopes, states){
+            $ionicHistory.clearHistory();
+            $ionicHistory.clearCache();
+    });
+  
     $ionicLoading.show();
     if(localStorage.idSession){
         $rootScope.idSession = localStorage.idSession;
@@ -27,8 +32,8 @@ login.controller('loginCtrl',['$scope', '$state', '$rootScope', '$ionicLoading',
         loginService.signIn($scope.model.email,$scope.model.password)
         .then(function(classId){
             $scope.model.email = '';
-            $scope.model.password = '';
-            $state.go('logged.recent',{classId: classId}, { reload: true });
+            $scope.model.password = '';        
+            $state.go('logged.recent',{classId: classId});
         })
         .catch(function(){
                $ionicPopup.alert({
