@@ -1,7 +1,35 @@
 <ion-view view-title="Avisos">
   <ion-content>
- <div ng-if="!model.showTabs">
-        <p> {{model.classId}}</p>
+      
+      <div ng-if="model.postsLoaded">
+   <div ng-if="model.hasClass === '0'">
+        <p class ='no-class-text'> No tienes clases inscritas, puedes registrar nuevos cursos en la configuración de su cuenta </p>
     </div>
+    
+     <div ng-if="model.hasClass">
+        <div class="list card" ng-repeat="post in model.posts">
+
+  <div class="item item-avatar">
+            <img src="img/rsz_fat_guy.jpg">
+            <h2>{{post.author}}</h2>
+            <p>{{post.date}}</p>
+        </div>
+
+        <div class="item item-body">
+     
+            <p>
+                {{post.body}}
+            </p>
+      
+        </div>
+
+        </div>
+    </div>
+    </div>
+    
+    <div ng-if="!model.postsLoaded" class="loading-cards">
+        <ion-spinner></ion-spinner>
+    </div>
+  
   </ion-content>
 </ion-view>
