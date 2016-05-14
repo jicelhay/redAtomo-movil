@@ -1,8 +1,9 @@
 var logged = angular.module('logged',[]);
 
 logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 'clientService',
- '$ionicModal', '$ionicPopup', '$ionicLoading', 'classService', 'loginService',
- function($scope, $state, $stateParams, Constant, clientService, $ionicModal,$ionicPopup, $ionicLoading, classService, loginService) {
+ '$ionicModal', '$ionicPopup', '$ionicLoading', 'classService', 'loginService', '$ionicHistory',
+ function($scope, $state, $stateParams, Constant, clientService, $ionicModal,$ionicPopup, $ionicLoading, 
+   classService, loginService, $ionicHistory) {
      
       $scope.model = {classId: $stateParams.classId};
       $scope.model.classes = classService.getClasses();
@@ -25,32 +26,44 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
      
      //Metodos scope
      
-      $scope.openConfig = function() {
-        $scope.configModal.show();
+    $scope.openConfig = function() {
+      $scope.configModal.show();
     };
     
     $scope.closeConfig = function() {
-        $scope.configModal.hide();
+      $ionicHistory.nextViewOptions({
+        historyRoot: true,
+        });
+      var classLength = $scope.model.classes.length;
+      if(classLength === 0){
+        $scope.model.classId = 0;
+        $state.go('logged.recent',{classId: 0})
+      }
+      else{
+        $scope.model.classId = $scope.model.classes[classLength- 1].id;
+        $state.go('logged.recent',{classId: $scope.model.classId});    
+      }  
+      $scope.configModal.hide();
     };
     
     $scope.goToClass = function(clientClass){
-     $scope.model.classId = clientClass.id;
-     $state.go('logged.recent',{classId: clientClass.id})
+      $scope.model.classId = clientClass.id;
+      $ionicHistory.nextViewOptions({
+        historyRoot: true,
+        });
+      $state.go('logged.recent',{classId: clientClass.id});
     }
     
-    $scope.news = function(){
-        console.log($scope.model.classId)
-     $state.go('logged.news',{classId: $scope.model.classId})   
+    $scope.news = function(){   
+      $state.go('logged.news',{classId: $scope.model.classId});   
     };
     
     $scope.multimedia = function(){
-        console.log($scope.model.classId)
-    $state.go('logged.multimedia',{classId: $scope.model.classId})   
+      $state.go('logged.multimedia',{classId: $scope.model.classId})   
     };
     
-     $scope.recent = function(){
-         console.log($scope.model.classId)
-    $state.go('logged.recent',{classId: $scope.model.classId})   
+     $scope.recent = function(){ 
+      $state.go('logged.recent',{classId: $scope.model.classId})   
     };
     
     $scope.logOut = function(){
