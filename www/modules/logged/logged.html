@@ -4,7 +4,7 @@
     
 
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <button class="button button-icon button-clear menu-icon ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -41,13 +41,13 @@
         <div class="item" ng-if="model.classes.length<=0">
             No tienes cursos registrados
         </div>   
-        <div class="item" ng-repeat="clientClass in model.classes" ng-click="goToClass(clientClass)" menu-close>
+        <div class="item" ng-repeat="clientClass in model.classes" ng-click="goToClass(clientClass)" ng-class="{ 'selected-class' : clientClass===model.selectedClass}"menu-close>
             {{clientClass.name}}
         </div>
         <ion-item class="item-divider" menu-close ng-click="openConfig()">
           Configuración
         </ion-item>
-         <ion-item menu-close ng-click="logOut()">
+         <ion-item class="item-divider" menu-close ng-click="logOut()">
           Salir
         </ion-item>     
       </ion-list>

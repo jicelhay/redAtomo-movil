@@ -7,6 +7,7 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
      
       $scope.model = {classId: $stateParams.classId};
       $scope.model.classes = classService.getClasses();
+    
        
       $ionicModal.fromTemplateUrl('modules/logged/config-modal.html', {
         scope: $scope,
@@ -29,9 +30,11 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
       var classLength = $scope.model.classes.length;
       if(classLength === 0){
         $scope.model.classId = 0;
-        $state.go('logged.recent',{classId: 0})
+        $state.go('logged.recent',{classId: 0});
+        $scope.model.selectedClass = null;
       }
       else{
+        $scope.model.selectedClass = $scope.model.classes[classLength- 1];
         $scope.model.classId = $scope.model.classes[classLength- 1].id;
         $state.go('logged.recent',{classId: $scope.model.classId});    
       }  
@@ -39,6 +42,7 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
     };
     
     $scope.goToClass = function(clientClass){
+      $scope.model.selectedClass = clientClass;
       $scope.model.classId = clientClass.id;
       $ionicHistory.nextViewOptions({
         historyRoot: true,

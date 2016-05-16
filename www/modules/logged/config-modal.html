@@ -1,13 +1,13 @@
 <ion-modal-view ng-controller="configCtrl">
   <ion-header-bar> 
    <div class="buttons">
-      <button class="button button-icon icon ion-close" style="margin-left: 350px;" ng-click="closeConfig()"></button>
+      <i class="icon ion-close" style="margin-left: 385px; margin-top: 10px;" ng-click="closeConfig()"></i>
     </div>
   </ion-header-bar>
-  <ion-content>
+  <ion-content class="padding-8">
    <div class="list">
 
-        <div class="item item-divider">
+        <div class="item item-divider config-title">
             Administrar mis cursos
         </div>
         <div class="item" ng-if="model.classes.length<=0">
@@ -18,7 +18,7 @@
             <i class="icon ion-trash-a"></i>
         </div>
     </div>
-    <div class="item item-divider">
+    <div class="item item-divider config-title">
         Agregar un nuevo curso
     </div>
     <form ng-submit="addClass()">

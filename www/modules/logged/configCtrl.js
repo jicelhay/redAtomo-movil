@@ -3,7 +3,7 @@ var logged = angular.module('logged');
 logged.controller('configCtrl',['$scope','$rootScope' ,'Constant', 'classService', '$ionicPopup', '$ionicLoading',
  function($scope,$rootScope ,Constant, classService, $ionicPopup, $ionicLoading) {
      
- $scope.model = {code: null};
+ $scope.model.code = null;
       
    
  $scope.addClass = function(){     
