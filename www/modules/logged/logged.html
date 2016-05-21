@@ -12,15 +12,15 @@
     <!-- TABS -->
     <ion-tabs ng-if="!model.showTabs">
 
-      <ion-tab title="Recientes" icon-off="ion-ios-clock-outline" icon-on="ion-ios-clock" ng-click="recent()">
+      <ion-tab ripple ripple-dark title="Recientes"  ng-click="recent()">
         <ion-nav-view name="tab-recent"></ion-nav-view>
       </ion-tab>
 
-      <ion-tab title="Avisos" icon-off="ion-ios-bookmarks-outline" icon-on="ion-ios-bookmarks" ng-click="news()">
+      <ion-tab ripple  ripple-dark title="Avisos"  ng-click="news()">
         <ion-nav-view name="tab-news"></ion-nav-view>
       </ion-tab>
 
-      <ion-tab title="Multimedia" icon-off="ion-ios-camera-outline" icon-on="ion-ios-camera" ng-click="multimedia()">
+      <ion-tab ripple ripple-dark title="Multimedia"  ng-click="multimedia()">
         <ion-nav-view name="tab-multimedia"></ion-nav-view>
       </ion-tab>
 
@@ -41,7 +41,7 @@
         <div class="item" ng-if="model.classes.length<=0">
             No tienes cursos registrados
         </div>   
-        <div class="item" ng-repeat="clientClass in model.classes" ng-click="goToClass(clientClass)" ng-class="{ 'selected-class' : clientClass===model.selectedClass}"menu-close>
+        <div class="item" ripple ripple-dark ng-repeat="clientClass in model.classes" ng-click="goToClass(clientClass)" ng-class="{ 'selected-class' : clientClass===model.selectedClass}"menu-close>
             {{clientClass.name}}
         </div>
         <ion-item class="item-divider" menu-close ng-click="openConfig()">

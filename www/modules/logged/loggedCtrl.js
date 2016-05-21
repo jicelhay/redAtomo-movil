@@ -3,10 +3,11 @@ var logged = angular.module('logged',[]);
 logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 'clientService',
  '$ionicModal', '$ionicPopup', '$ionicLoading', 'classService', 'loginService', '$ionicHistory',
  function($scope, $state, $stateParams, Constant, clientService, $ionicModal,$ionicPopup, $ionicLoading, 
-   classService, loginService, $ionicHistory) {
+   classService, loginService, $ionicHistory ) {
      
       $scope.model = {classId: $stateParams.classId};
       $scope.model.classes = classService.getClasses();
+  
     
        
       $ionicModal.fromTemplateUrl('modules/logged/config-modal.html', {
@@ -25,7 +26,7 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
     
     $scope.closeConfig = function() {
       $ionicHistory.nextViewOptions({
-        historyRoot: true,
+        historyRoot: true
         });
       var classLength = $scope.model.classes.length;
       if(classLength === 0){
@@ -35,6 +36,7 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
       }
       else{
         $scope.model.selectedClass = $scope.model.classes[classLength- 1];
+        console.log($scope.model.selectedClass);
         $scope.model.classId = $scope.model.classes[classLength- 1].id;
         $state.go('logged.recent',{classId: $scope.model.classId});    
       }  
@@ -45,12 +47,15 @@ logged.controller('loggedCtrl',['$scope', '$state', '$stateParams', 'Constant', 
       $scope.model.selectedClass = clientClass;
       $scope.model.classId = clientClass.id;
       $ionicHistory.nextViewOptions({
-        historyRoot: true,
+        historyRoot: true
         });
       $state.go('logged.recent',{classId: clientClass.id});
     }
     
-    $scope.news = function(){   
+    $scope.news = function(){
+        $ionicHistory.nextViewOptions({
+            historyRoot: true
+        });
       $state.go('logged.news',{classId: $scope.model.classId});   
     };
     

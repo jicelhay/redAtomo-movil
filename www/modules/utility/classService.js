@@ -9,7 +9,7 @@ login.factory('classService',[ '$timeout', function($timeout) {
         classes = clientClasses;
     };
     publicMethods.getClasses = function(){
-        classes = classes ? classes : [];
+        if(!classes) return [];
         return classes;
     };
     publicMethods.addClass = function(code){
@@ -37,8 +37,15 @@ login.factory('classService',[ '$timeout', function($timeout) {
     
     publicMethods.deleteClasses = function(){
         classes = [];
-        console.log(classes);
-    }
+    };
+
+    publicMethods.getClassTittlefromId = function(id){
+        for(var i = 0;i<classes.length;i++){
+            if(classes[i].id == id){
+                return classes[i].name + ' - ' + classes[i].school;
+            }
+        }
+    };
    
     
     return publicMethods;

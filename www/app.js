@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('redAtomo', ['ionic', 'ionic-material', 'starter.controllers','login', 'logged'])
+angular.module('redAtomo', ['ionic', 'starter.controllers','login', 'logged', 'ionicRipple'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -56,7 +56,8 @@ angular.module('redAtomo', ['ionic', 'ionic-material', 'starter.controllers','lo
     url: "/news",
     views: {
       'tab-news': {
-        templateUrl: "templates/browse.html"
+        templateUrl: "modules/news/news.html",
+        controller: "newsCtrl"
       }
     }
   })

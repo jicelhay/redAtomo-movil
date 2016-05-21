@@ -1,8 +1,7 @@
 <ion-modal-view ng-controller="configCtrl">
-  <ion-header-bar> 
-   <div class="buttons">
-      <i class="icon ion-close" style="margin-left: 385px; margin-top: 10px;" ng-click="closeConfig()"></i>
-    </div>
+  <ion-header-bar>
+      <h1 class="title">Configuración</h1>
+      <button class="button button-clear" ng-click="closeConfig()"><i style="color: black;" class="ion-close-round"></i></button>
   </ion-header-bar>
   <ion-content class="padding-8">
    <div class="list">
@@ -13,9 +12,9 @@
         <div class="item" ng-if="model.classes.length<=0">
             No tienes cursos registrados
         </div>   
-        <div class="item item-icon-right" ng-repeat="clientClass in model.classes" ng-click="deleteClass(clientClass)">
+        <div ripple ripple-dark class="item item-icon-right" ng-repeat="clientClass in model.classes">
             {{clientClass.name}}
-            <i class="icon ion-trash-a"></i>
+            <i class="icon ion-trash-a" ng-click="deleteClass(clientClass)"></i>
         </div>
     </div>
     <div class="item item-divider config-title">
@@ -28,7 +27,7 @@
             <input type="text" placeholder="Código de seguridad" ng-model="model.code">
         </label>
         <label class="item">
-          <button class="button button-block button-assertive" type="submit">Registrar</button>
+          <button ripple class="button button-block button-assertive" type="submit">Registrar</button>
         </label>
       </div>
     </form>
