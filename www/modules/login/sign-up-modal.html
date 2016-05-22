@@ -1,10 +1,10 @@
 <ion-modal-view>
-  <ion-header-bar> 
-   <div class="buttons">
-      <button class="button button-icon icon ion-close" style="margin-left: 350px;" ng-click="closeSignUpModal()"></button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
+    <ion-header-bar>
+        <h1 class="title">Registro</h1>
+        <button class="button button-clear" ng-click="closeSignUpModal()"><i style="color: black;" class="ion-close-round"></i></button>
+    </ion-header-bar>
+
+  <ion-content class="padding-8">
     <form ng-submit="signUp()">
       <div class="list">
         <label class="item item-input item-floating-label">
@@ -20,7 +20,7 @@
             <input type="password" placeholder="Password" ng-model="model.password">
         </label> 
         <label class="item">
-          <button class="button button-block button-assertive" type="submit">Registrarse</button>
+          <button ripple class="button button-block button-outline button-assertive" type="submit">Registrarse</button>
         </label>
       </div>
     </form>

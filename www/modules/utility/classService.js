@@ -9,7 +9,9 @@ login.factory('classService',[ '$timeout', function($timeout) {
         classes = clientClasses;
     };
     publicMethods.getClasses = function(){
-        if(!classes) return [];
+        if(!classes){
+            classes = [];
+        }
         return classes;
     };
     publicMethods.addClass = function(code){
